@@ -20,6 +20,7 @@
 package org.screamingsandals.bedwars.utils;
 
 import lombok.experimental.UtilityClass;
+import org.bukkit.ChatColor;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import org.screamingsandals.bedwars.BedWarsPlugin;
@@ -423,14 +424,7 @@ public class MiscUtils {
 
     @NotNull
     public String translateAlternateColorCodes(char altColorChar, @NotNull String textToTranslate) {
-        char[] b = textToTranslate.toCharArray();
-        for (int i = 0; i < b.length - 1; i++) {
-            if (b[i] == altColorChar && "0123456789AaBbCcDdEeFfKkLlMmNnOoRrXx".indexOf(b[i + 1]) > -1) {
-                b[i] = '§';
-                b[i + 1] = Character.toLowerCase(b[i + 1]);
-            }
-        }
-        return new String(b);
+        return ChatColor.translateAlternateColorCodes(altColorChar, textToTranslate);
     }
 
     public String toLegacyColorCode(Color color) {
